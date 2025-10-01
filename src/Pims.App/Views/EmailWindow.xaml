@@ -1,0 +1,26 @@
+<Window x:Class="Pims.App.Views.EmailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Email Lookup"
+        Height="450"
+        Width="600"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d">
+    <DockPanel Margin="16">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="Refresh" Command="{Binding RefreshCommand}" Padding="12,4" Margin="0,0,8,0" />
+            <Button Content="Copy Latest OTP" Command="{Binding CaptureOtpCommand}" Padding="12,4" Margin="0,0,8,0" />
+            <TextBlock Text="{Binding StatusMessage}" VerticalAlignment="Center" />
+        </StackPanel>
+        <ListView ItemsSource="{Binding Emails}" Margin="0,12,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Subject" DisplayMemberBinding="{Binding Subject}" Width="350" />
+                    <GridViewColumn Header="Received" DisplayMemberBinding="{Binding ReceivedAt}" Width="200" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</Window>
